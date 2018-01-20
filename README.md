@@ -1,6 +1,6 @@
 <h1>Saywololo, just say wololo to the mic and get converted!</h1>
 
-<h2>www.saywololo.com</h2>
+<h2>https://www.saywololo.com</h2>
 
 ![Alt text](http://www.saywololo.com/img/saywololo%20page.png "Wololo!")
 
