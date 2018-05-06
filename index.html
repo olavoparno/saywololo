@@ -1,246 +1,31 @@
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Plain simple wololo from Age of Empires Chant Priest.">
     <meta name="description" content="Wololo! Just say Wololo and you will convert!">
     <meta name="Thanks" content="all thanks to https://www.talater.com/annyang/">
-    <!--<link rel="stylesheet" type="text/css" href="style.min.css">-->
-    <link rel="shortcut icon" type="image/png" href="favicon.png"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/annyang.min.js"></script>
+    <link rel="shortcut icon" type="image/png" href="favicon.png"/>
+    <link rel="stylesheet" type="text/css" href="style-new.css">
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/annyang.min.js"></script>
     <title>It is time to repent!</title>
-    <style>
-        .header,div#unsupported{text-align:center;font-family:Diablo}.header{background-image:url(img/header.jpeg);background-position:center;text-shadow:2px 0 0 #fff,-2px 0 0 #fff,0 2px 0 #fff,0 -2px 0 #fff,1px 1px #fff,-1px -1px 0 #fff,1px -1px 0 #fff,-1px 1px 0 #fff;padding:15px;border-style:solid;border-color:#000;border-width:medium}.wololo{text-align:center;padding:15px}.hidden{display:none}div#unsupported{position:fixed;bottom:0;left:0;width:100%;max-height:60%;color:#b94a48;background-color:#f2dede;border:1px solid #eed3d7;font-size:1.3em;line-height:1.4em;padding-bottom:10px}div#unsupported a,div#unsupported a:visited{color:#b94a48;font-weight:700}div#unsupported h4{font-size:1.5em;margin:15px 0 10px}div#unsupported p{line-height:20px}@media only screen and (min-width:320px){.header{height:60px;font-size:100%;padding:15px}}@media only screen and (min-width:480px){.header{height:90px;font-size:160%}}@media only screen and (min-width:548px){.header{height:120px;font-size:190%}}@media only screen and (min-width:640px){.header{height:140px;font-size:220%}}@media only screen and (min-width:800px){.header{height:170px;font-size:270%}}@media only screen and (min-width:1024px){.header{height:200px;font-size:330%}}@media only screen and (min-width:1224px){.header{height:250px;font-size:360%}}@media only screen and (min-width:1824px){.header{height:350px;font-size:450%}}@font-face{font-family:Diablo;src:url(type/DIABLO_H.eot);src:local("☺"),url(type/DIABLO_H.woff) format("woff"),url(type/DIABLO_H.otf) format("opentype"),url(type/DIABLO_H.svg#filename) format("svg")}
-    </style>
-    <!-- Start of StatCounter Code for Default Guide -->
-    <script type="text/javascript">
-    var sc_project=10899382; 
-    var sc_invisible=1; 
-    var sc_security="cc6a853c"; 
-    var scJsHost = (("https:" == document.location.protocol) ?
-    "https://secure." : "http://www.");
-    document.write("<sc"+"ript type='text/javascript' src='" +
-    scJsHost+
-    "statcounter.com/counter/counter.js'></"+"script>");
-    </script>
-    <noscript><div class="statcounter"><a title="web analytics"
-    href="http://statcounter.com/" target="_blank"><img
-    class="statcounter"
-    src="//c.statcounter.com/10899382/0/cc6a853c/1/" alt="web
-    analytics"></a></div></noscript>
-    <!-- End of StatCounter Code for Default Guide -->
-    <!-- SCRIPT STARTING -->
-    <script type="text/javascript">
-        var converted = 0, lastWololo = 0, randImg = 0, curHeight = 0, curWidth = 0;
-        
-        function callWololo() {
-            "use strict";
-            var randSound = Math.floor((Math.random() * 4) + 1), elemImg = document.getElementById("img"), elemAudio = document.getElementById("audio");
-
-            while (randImg === lastWololo) {
-                randImg = Math.floor((Math.random() * 19) + 1);
-            }
-
-            lastWololo = randImg;
-
-            if (elemAudio === null) {
-
-                elemAudio = document.createElement("audio");
-                document.body.appendChild(elemAudio);
-            }
-
-            elemAudio.id = "audio";
-            elemAudio.src = "sounds/Wololo" + randSound + ".Wav";
-
-            if (elemImg === null) {
-
-                elemImg = document.createElement("img");
-                document.body.appendChild(elemImg);
-            }
-
-            elemImg.id = "img";
-            elemImg.src = 'img/Wololo' + randImg + '.jpg';
-            elemImg.setAttribute("alt", "Wololo" + randImg + ".jpg!");
-            
-            curHeight = elemImg.clientHeight;
-            curWidth = elemImg.clientWidth;
-            
-            converted = converted + 1;
-
-            document.getElementById("h1Wololo").innerHTML = "Converted " + converted + "!";
-            elemAudio.play();
-        }
-
-        if (annyang) {
-
-            var commands = {
-
-                'show me *tag': function (tag) {
-
-                    "use strict";
-                    $.getJSON("https://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?",
-                        {
-                            tags: tag,
-                            tagmode: "any",
-                            format: "json"
-                        },
-                        function (data) {
-
-                            var rnd = Math.floor(Math.random() * data.items.length), image_src = data.items[rnd]['media']['m'].replace("_m", "_b"), elem = document.getElementById("img");
-
-                            if (elem === null) {
-                                elem = document.createElement("img");
-
-                                document.body.appendChild(elem);
-                            }
-
-                            elem.id = "img";
-                            elem.src = image_src;
-                            elem.setAttribute("alt", tag);
-
-                        });
-                },
-                
-                'maximize': function () {
-                    var elem = document.getElementById("img");
-
-                    if (!elem === null) {
-                        elem.setAttribute("height", "95%");
-                        elem.setAttribute("width", "95%");
-                    }
-                },
-                
-                'minimize': function () {
-                    var elem = document.getElementById("img");
-
-                    if (!elem === null) {
-                        elem.setAttribute("height", curHeight);
-                        elem.setAttribute("width", curWidth);
-                    }
-                },
-
-                'ieoeoeoeoeo': function () {
-                    "use strict";
-                    callWololo();
-                },
-
-                'ieoeoeo': function () {
-                    "use strict";
-                    callWololo();
-                },
-
-                'ieeoeeoeeo': function () {
-                    "use strict";
-                    callWololo();
-                },
-
-                'ieeoeeoeeoeeo': function () {
-                    "use strict";
-                    callWololo();
-                },
-
-                'wololo': function () {
-                    "use strict";
-                    callWololo();
-                },
-
-                'wololu': function () {
-                    "use strict";
-                    callWololo();
-                },
-
-                'wolulu': function () {
-                    "use strict";
-                    callWololo();
-                },
-
-                'wululu': function () {
-                    "use strict";
-                    callWololo();
-                },
-
-                'woolooloo': function () {
-                    "use strict";
-                    callWololo();
-                },
-
-                'uololo': function () {
-                    "use strict";
-                    callWololo();
-                },
-
-                'uoolooloo': function () {
-                    "use strict";
-                    callWololo();
-                },
-
-                'wowlowlow': function () {
-                    "use strict";
-                    callWololo();
-                },
-
-                'wowlolow': function () {
-                    "use strict";
-                    callWololo();
-                },
-
-                'wolowlow': function () {
-                    "use strict";
-                    callWololo();
-                },
-
-                'uowloulou': function () {
-                    "use strict";
-                    callWololo();
-                },
-
-                'woulowlo': function () {
-                    "use strict";
-                    callWololo();
-                },
-
-                'wololoo': function () {
-                    "use strict";
-                    callWololo();
-                },
-
-                'woololo': function () {
-                    "use strict";
-                    callWololo();
-                },
-
-                'uolooloo': function () {
-                    "use strict";
-                    callWololo();
-                }
-            };
-          // Add our commands to annyang
-            annyang.addCommands(commands);
-
-          // Start listening.
-            annyang.start();
-        } else {
-            $(document).ready(function () {
-                "use strict";
-                $('#unsupported').fadeIn('fast');
-            });
-        }
-    </script>
-  <!-- SCRIPT ENDING -->
+    <script src="./js/scripts-new.js"></script>
+    <script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
 </head>
 <body>
-    <div class="header">
+    <div class="wololo-header">
         <h1 id="h1Wololo">Say wololo!</h1>
     </div>
-    <div class="wololo">
-        <img id="img" src="img/wolologreet.gif" alt="Use your microphone to convert!">
-    </div>
+    <div class="wololo-div"></div>
     <div id="unsupported" class="hidden">
         <h4>It looks like your browser doesn't support speech recognition.</h4>
         <p>Saywololo plays nicely with all browsers, progressively enhancing modern browsers that support the SpeechRecognition standard, while leaving users with older browsers unaffected.</p>
         <p>Please visit <a href="http://www.saywololo.com/">http://www.saywololo.com/</a> in a desktop browser like Chrome.</p>
     </div>
+    
     <noscript>
         <div id="unsupported">
             <h4>It looks like your browser doesn't support speech recognition.</h4>
