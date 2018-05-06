@@ -7,7 +7,7 @@ const callWololo = () => {
     let elemAudio = document.getElementById("audio");
 
     while (randImg === lastWololo) {
-        randImg = Math.floor((Math.random() * 19) + 1);
+        randImg = Math.floor((Math.random() * 32) + 1);
     }
 
     lastWololo = randImg;
